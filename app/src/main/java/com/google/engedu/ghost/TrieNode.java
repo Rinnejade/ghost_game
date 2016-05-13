@@ -116,19 +116,6 @@ public class TrieNode {
 //        Log.i("returned : ", String.valueOf(t));
         return t;
     }
-//    public void findWords(TrieNode t, String wordSoFar, List<String> results){
-//        String letter = "";
-//        for (String key : t.children.keySet()) {
-//            TrieNode child  = t.children.get(key);
-//            if(child!= null){
-//                letter = key;
-//            }
-//            if(child.isWord)
-//                results.add(wordSoFar+letter);
-//            else
-//                findWords(child, wordSoFar+letter, results);
-//        }
-//    }
         public void findWords(TrieNode t, String wordSoFar, ArrayList<String> results){
             if(t == null || results.size()>300) return;
             if(t.isWord) results.add(wordSoFar);
