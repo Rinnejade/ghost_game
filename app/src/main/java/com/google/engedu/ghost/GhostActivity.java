@@ -44,7 +44,7 @@ public class GhostActivity extends ActionBarActivity {
         setContentView(R.layout.activity_ghost);
         try {
             InputStream in = getAssets().open("words.txt");
-            dictionary = new SimpleDictionary(in);
+            dictionary = new FastDictionary(in);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -104,6 +104,7 @@ public class GhostActivity extends ActionBarActivity {
         TextView label = (TextView) findViewById(R.id.gameStatus);
         TextView text = (TextView) findViewById(R.id.ghostText);
         if(text.getText().length() > 3 && dictionary.isWord(text.getText().toString())) {
+            Log.i("comp wins isword :" , text.getText().toString() );
             compScore++;
             scoreUpdate();
             label.setText(COMPUTER_WINS);
@@ -116,6 +117,7 @@ public class GhostActivity extends ActionBarActivity {
             userTurn = true;
             label.setText(USER_TURN);
         }else {
+            Log.i("comp wins no prefix :" , prefix);
             compScore++;
             scoreUpdate();
             label.setText(COMPUTER_WINS);
@@ -136,6 +138,7 @@ public class GhostActivity extends ActionBarActivity {
 //        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
 //        imm.toggleSoftInput(InputMethodManager.SHOW_FORCED,0);
         userTurn = random.nextBoolean();
+//        userTurn = true;
         TextView text = (TextView) findViewById(R.id.ghostText);
         text.setText("");
         TextView label = (TextView) findViewById(R.id.gameStatus);

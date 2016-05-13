@@ -1,5 +1,7 @@
 package com.google.engedu.ghost;
 
+import android.util.Log;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -16,9 +18,12 @@ public class SimpleDictionary implements GhostDictionary {
         String line = null;
         while((line = in.readLine()) != null) {
             String word = line.trim();
-            if (word.length() >= MIN_WORD_LENGTH)
-              words.add(line.trim());
+            if (word.length() >= MIN_WORD_LENGTH) {
+                words.add(line.trim());
+                Log.i("word : ", word);
+            }
         }
+        Log.i("Word Size : ", String.valueOf(words.size()));
     }
 
     @Override
